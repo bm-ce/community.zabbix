@@ -43,4 +43,4 @@
   loop:
     - name: zabbix_run_sudo
       state: "{{ selinux_allow_zabbix_run_sudo | bool }}"
-      is_available: "{{ ansible_facts['os_family'] in ['RedHat'] }}"
+      is_available: "{{ ansible_facts['os_family'] in ['RedHat'] and ansible_facts['distribution_major_version'] | int < 10 }}"
